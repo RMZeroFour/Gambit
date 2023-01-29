@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vms="clr-namespace:Gambit.UI.ViewModels"
+                    xmlns:h="clr-namespace:Gambit.UI.Helpers">
+
+    <DataTemplate DataType="{x:Type vms:DebugHostVM}">
+
+            <DockPanel Margin="4">
+                <ComboBox DockPanel.Dock="Top"
+                          SelectedItem="{Binding Path=Current, Mode=TwoWay}"
+                          ItemsSource="{Binding DebugTools}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vms:IDebugToolVM}">
+                            <TextBlock Text="{Binding DisplayName}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <ContentControl Content="{Binding Current}"/>
+            </DockPanel>
+        
+    </DataTemplate>
+
+</ResourceDictionary>

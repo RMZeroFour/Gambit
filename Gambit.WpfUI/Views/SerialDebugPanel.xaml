@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vms="clr-namespace:Gambit.UI.ViewModels">
+
+    <DataTemplate DataType="{x:Type vms:SerialDebugVM}">
+        <DockPanel>
+            <Button DockPanel.Dock="Bottom" 
+                    HorizontalAlignment="Stretch"
+                    Content="Clear" Command="{Binding ClearTextCommand}"/>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock Text="{Binding OutputText}" TextWrapping="Wrap"
+                           FontSize="12" FontFamily="Lucida Sans Typewriter"/>
+            </ScrollViewer>
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

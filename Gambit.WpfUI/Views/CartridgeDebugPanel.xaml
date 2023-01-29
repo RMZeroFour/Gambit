@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vms="clr-namespace:Gambit.UI.ViewModels">
+
+    <DataTemplate DataType="{x:Type vms:CartridgeDebugVM}">
+
+        <DataTemplate.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </DataTemplate.Resources>
+
+        <StackPanel>
+            <UniformGrid Rows="1">
+                <TextBlock Text="MBC Type"/>
+                <TextBlock Text="{Binding Mbc}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1">
+                <TextBlock Text="Game Title"/>
+                <TextBlock Text="{Binding GameTitle}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1">
+                <TextBlock Text="Has Battery"/>
+                <CheckBox IsChecked="{Binding Battery}" IsHitTestVisible="False" Focusable="False"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1">
+                <TextBlock Text="ROM Banks"/>
+                <TextBlock Text="{Binding RomBanks, StringFormat='{}{0} x 16 KiB'}"/>
+            </UniformGrid>
+
+            <UniformGrid Rows="1">
+                <TextBlock Text="RAM Banks"/>
+                <TextBlock Text="{Binding RamBanks, StringFormat='{}{0} x 8 KiB'}"/>
+            </UniformGrid>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

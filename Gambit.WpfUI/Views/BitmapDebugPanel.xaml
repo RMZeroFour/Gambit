@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vms="clr-namespace:Gambit.UI.ViewModels">
+
+    <DataTemplate DataType="{x:Type vms:BitmapDebugVM}">
+        <DockPanel Margin="4">
+            <ComboBox DockPanel.Dock="Top"
+                          SelectedItem="{Binding Path=Current, Mode=TwoWay}"
+                          ItemsSource="{Binding Sources}">
+                <!--<ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vms:GraphicsVM+Source}">
+                        <TextBlock Text="{Binding DisplayName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>-->
+            </ComboBox>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ContentControl Content="{Binding Bitmap}"/>
+            </ScrollViewer>
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

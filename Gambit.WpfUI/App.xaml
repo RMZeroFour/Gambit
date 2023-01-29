@@ -1,0 +1,39 @@
+﻿<Application x:Class="Gambit.UI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:h="clr-namespace:Gambit.UI.Helpers">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+               
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Purple.xaml" />
+               
+                <ResourceDictionary>
+                    <BitmapImage x:Key="AppIcon">Assets/AppIcon.ico</BitmapImage>
+                    <FontFamily x:Key="PressStart2P">Assets/Fonts/#Press Start 2P Regular</FontFamily>
+
+                    <h:TernaryConverter x:Key="Ternary"/>
+                    
+                    <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+                    
+                    <h:ChainedConverter x:Key="InvertedBooleanToVisibility">
+                        <h:BoolInvertConverter/>
+                        <BooleanToVisibilityConverter/>
+                    </h:ChainedConverter>
+                </ResourceDictionary>
+
+                <ResourceDictionary Source="Views/GraphicsView.xaml"/>
+
+                <ResourceDictionary Source="Views/DebugHost.xaml"/>
+                <ResourceDictionary Source="Views/SerialDebugPanel.xaml"/>
+                <ResourceDictionary Source="Views/RegistersDebugPanel.xaml"/>
+                <ResourceDictionary Source="Views/CartridgeDebugPanel.xaml"/>
+                <ResourceDictionary Source="Views/BitmapDebugPanel.xaml"/>
+                <ResourceDictionary Source="Views/DisassemblyDebugPanel.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+  </Application.Resources>
+</Application>

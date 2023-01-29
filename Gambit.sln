@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gambit.Core", "Gambit.Core\Gambit.Core.csproj", "{E84BCD33-08F4-4A40-A2AC-6F26D3C54BD9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gambit.WpfUI", "Gambit.WpfUI\Gambit.WpfUI.csproj", "{86102992-36E9-46AD-B916-A848EBB373F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gambit.OpenTKUI", "Gambit.OpenTKUI\Gambit.OpenTKUI.csproj", "{29A22884-1FE6-41E5-9C9D-1BB26BF31FBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E84BCD33-08F4-4A40-A2AC-6F26D3C54BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E84BCD33-08F4-4A40-A2AC-6F26D3C54BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E84BCD33-08F4-4A40-A2AC-6F26D3C54BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E84BCD33-08F4-4A40-A2AC-6F26D3C54BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86102992-36E9-46AD-B916-A848EBB373F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86102992-36E9-46AD-B916-A848EBB373F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86102992-36E9-46AD-B916-A848EBB373F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86102992-36E9-46AD-B916-A848EBB373F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A22884-1FE6-41E5-9C9D-1BB26BF31FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A22884-1FE6-41E5-9C9D-1BB26BF31FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A22884-1FE6-41E5-9C9D-1BB26BF31FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A22884-1FE6-41E5-9C9D-1BB26BF31FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {279B82F1-3CF5-4196-A265-9D6D559957B3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vms="clr-namespace:Gambit.UI.ViewModels">
+
+    <DataTemplate DataType="{x:Type vms:RegisterDebugVM}">
+        
+        <DataTemplate.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </DataTemplate.Resources>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <UniformGrid Columns="2">
+
+                <TextBlock Text="A"/>
+                <TextBlock Text="{Binding A, StringFormat={}0x{0:X2}}"/>
+                <TextBlock Text="F"/>
+                <TextBlock Text="{Binding F, StringFormat={}0x{0:X2}}"/>
+
+                <TextBlock Text="B"/>
+                <TextBlock Text="{Binding B, StringFormat={}0x{0:X2}}"/>
+                <TextBlock Text="C"/>
+                <TextBlock Text="{Binding C, StringFormat={}0x{0:X2}}"/>
+
+                <TextBlock Text="D"/>
+                <TextBlock Text="{Binding D, StringFormat={}0x{0:X2}}"/>
+                <TextBlock Text="E"/>
+                <TextBlock Text="{Binding E, StringFormat={}0x{0:X2}}"/>
+                
+                <TextBlock Text="H"/>
+                <TextBlock Text="{Binding H, StringFormat={}0x{0:X2}}"/>
+                <TextBlock Text="L"/>
+                <TextBlock Text="{Binding L, StringFormat={}0x{0:X2}}"/>
+
+                <TextBlock Text="PC"/>
+                <TextBlock Text="{Binding ProgramCounter, StringFormat={}0x{0:X4}}"/>
+                <TextBlock Text="SP"/>
+                <TextBlock Text="{Binding StackPointer, StringFormat={}0x{0:X4}}"/>
+
+                <TextBlock Text="Flag Z"/>
+                <CheckBox IsChecked="{Binding FlagZ}" IsHitTestVisible="False" Focusable="False"/>
+                <TextBlock Text="Flag N"/>
+                <CheckBox IsChecked="{Binding FlagN}" IsHitTestVisible="False" Focusable="False"/>
+                <TextBlock Text="Flag H"/>
+                <CheckBox IsChecked="{Binding FlagH}" IsHitTestVisible="False" Focusable="False"/>
+                <TextBlock Text="Flag C"/>
+                <CheckBox IsChecked="{Binding FlagC}" IsHitTestVisible="False" Focusable="False"/>
+
+            </UniformGrid>
+        </ScrollViewer>
+    </DataTemplate>
+
+</ResourceDictionary>
