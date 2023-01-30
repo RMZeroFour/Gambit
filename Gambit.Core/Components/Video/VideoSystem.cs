@@ -302,11 +302,15 @@ public class VideoSystem : IComponent, ISerializable
 
 			//int yCoord = drawingWindow ? LcdY - WindowY : LcdY + ScrollY;
 			int yCoord = drawingWindow ? windowLineCounter++ : LcdY + ScrollY;
+			if (yCoord >= 256)
+				yCoord -= 256;
 			int tileMapRow = yCoord / 8;
 
 			for (int pixelX = 0; pixelX < 160; pixelX++)
 			{
 				int xCoord = drawingWindow && pixelX >= WindowX ? pixelX - WindowX : pixelX + ScrollX;
+				if (xCoord >= 256)
+					xCoord -= 256;
 				int tileMapCol = xCoord / 8;
 
 				int tileMapLocation = tileMapStart + tileMapRow * 32 + tileMapCol;
@@ -349,8 +353,8 @@ public class VideoSystem : IComponent, ISerializable
 			byte tileLocation = oam[sprLocation + 2];
 
 			byte sprAttrs = oam[sprLocation + 3];
-			bool sprFlipX = sprAttrs.TestBit(6);
-			bool sprFlipY = sprAttrs.TestBit(5);
+			bool sprFlipX = sprAttrs.TestBit(5);
+			bool sprFlipY = sprAttrs.TestBit(6);
 			byte pallete = sprAttrs.TestBit(4) ? ObjPalleteB : ObjPalleteA;
 			bool bgPriority = sprAttrs.TestBit(7);
 

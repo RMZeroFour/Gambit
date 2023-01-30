@@ -20,6 +20,8 @@ public partial class MainWindowVM : ObservableRecipient
 	[ObservableProperty]
 	[NotifyCanExecuteChangedFor(nameof(LoadRomCommand))]
 	[NotifyCanExecuteChangedFor(nameof(UnloadRomCommand))]
+	[NotifyCanExecuteChangedFor(nameof(SaveStateCommand))]
+	[NotifyCanExecuteChangedFor(nameof(LoadStateCommand))]
 	[NotifyPropertyChangedFor(nameof(EmulatorReady))]
 	private Emulator emulator;
 	public bool EmulatorReady => Emulator is not null;
@@ -37,11 +39,12 @@ public partial class MainWindowVM : ObservableRecipient
 
 	private readonly ITimerService timer;
 	private readonly IFilePickerService picker;
+	private readonly INotifyUserService notify;
 
 	private readonly IUpdatableVM[] allComponents;
 	private readonly IUpdatableVM[] nonDebugComponents;
 
-	public MainWindowVM (ITimerService ts, IFilePickerService fs, GraphicsVM gvm, InputVM ivm, Func<DebugHostVM> host)
+	public MainWindowVM (ITimerService ts, IFilePickerService fs, INotifyUserService ns, GraphicsVM gvm, InputVM ivm, Func<DebugHostVM> host)
 	{
 		timer = ts;
 		timer.SetInterval(TimeSpan.FromSeconds(1.0 / 60))
@@ -52,6 +55,8 @@ public partial class MainWindowVM : ObservableRecipient
 		picker.SetInitialDir(Environment.CurrentDirectory)
 			.SetFilter("GameBoy ROMs (*.gb)|*.gb;*.gbc;*.bin;*.dat;*.rom")
 			.SetExtension(".gb");
+
+		notify = ns;
 
 		TopHost = host();
 		BottomHost = host();
@@ -100,6 +105,7 @@ public partial class MainWindowVM : ObservableRecipient
 	}
 
 	private static string GetSavFilePath (string rom) => Path.ChangeExtension(rom, ".sav");
+	private static string GetStateFilePath (string rom) => Path.ChangeExtension(rom, ".state");
 
 	private bool CanLoadRom () => !EmulatorReady;
 	[RelayCommand(CanExecute = nameof(CanLoadRom))]
@@ -151,29 +157,31 @@ public partial class MainWindowVM : ObservableRecipient
 		timer.Stop();
 	}
 
-	[RelayCommand]
+	private bool CanSaveState () => EmulatorReady;
+	[RelayCommand(CanExecute = nameof(CanSaveState))]
 	private async Task SaveState ()
 	{
 		ISaveData saveData = new JsonSaveData();
 		Emulator.SaveState(saveData);
 
-		// set path to same as rom file path with diff ext
-		string path = @"C:\Users\Ritam\Desktop\save.json";
-		using Stream stream = File.Open(path, FileMode.Create);
+		string stateFilePath = GetStateFilePath(romFilePath);
+		using Stream stream = File.Open(stateFilePath, FileMode.Create);
 		await saveData.SaveToStream(stream);
 	}
 
-	[RelayCommand]
+	private bool CanLoadState () => File.Exists(GetStateFilePath(romFilePath));
+	[RelayCommand(CanExecute = nameof(CanLoadState))]
 	private async Task LoadState ()
 	{
 		ILoadData loadData = new JsonLoadData();
 
-		string path = @"C:\Users\Ritam\Desktop\save.json";
-		using Stream stream = File.OpenRead(path);
+		string stateFilePath = GetStateFilePath(romFilePath);
+		using Stream stream = File.OpenRead(stateFilePath);
 		await loadData.LoadFromStream(stream);
 
 		// use return value somehow
-		Emulator.LoadState(loadData);
+		if (!Emulator.LoadState(loadData))
+			notify.Notify("Error loading save state file!");
 	}
 
 	[RelayCommand]

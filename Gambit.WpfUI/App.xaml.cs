@@ -19,6 +19,7 @@ public partial class App : Application
 		builder.RegisterType<DispatcherTimerService>().As<ITimerService>();
 		builder.RegisterType<FilePickerService>().As<IFilePickerService>();
 		builder.RegisterType<KeyboardGamepadService>().As<IGamepadService>();
+		builder.RegisterType<NotifyUserService>().As<INotifyUserService>();
 
 		builder.RegisterType<MainWindowVM>();
 		builder.RegisterType<GraphicsVM>();

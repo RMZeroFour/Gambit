@@ -15,7 +15,7 @@
                     <FontFamily x:Key="PressStart2P">Assets/Fonts/#Press Start 2P Regular</FontFamily>
 
                     <h:TernaryConverter x:Key="Ternary"/>
-                    
+
                     <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
                     
                     <h:ChainedConverter x:Key="InvertedBooleanToVisibility">
